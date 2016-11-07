@@ -15,29 +15,25 @@ public class InputActivity extends AppCompatActivity {
     public static final String TAHUN_LAHIR = "TahunLahir";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
 
-        findViewById(R.id.buttonFinish).setOnClickListener(new View.OnClickListener()
-        {
-            @RequiresApi(api = Build.VERSION_CODES.N)
+        findViewById(R.id.buttonFinish).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 EditText etNama = (EditText) findViewById(R.id.editTextNama);
                 EditText etThnLhr = (EditText) findViewById(R.id.editTextThnLhr);
                 String nama = etNama.getText().toString();
                 String thnLhrStr = etThnLhr.getText().toString();
 
                 int thnLhr = thnLhrStr.isEmpty()?
-                        Calendar.getInstance().get(Calendar.YEAR);
-                Integer.parseInt(thnLhrStr);
+                        Calendar.getInstance().get(Calendar.YEAR):
+                        Integer.parseInt(thnLhrStr);
 
                 Intent intent = new Intent();
                 intent.putExtra(NAMA,nama);
-                intent.putExtra(TAHUN_LAHIR,thnLhr));
+                intent.putExtra(TAHUN_LAHIR,thnLhr);
 
                 setResult(RESULT_OK,intent);
                 finish();
